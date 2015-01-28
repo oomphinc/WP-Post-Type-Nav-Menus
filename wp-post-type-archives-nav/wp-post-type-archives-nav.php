@@ -45,6 +45,13 @@ class WP_Post_Type_Archives_Nav {
 				$post_type->type = 'cpt-archive';
 				$post_type->object = $post_type->name;
 				$post_type->object_id = $post_type->name;
+				$post_type->menu_item_parent = '';
+				$post_type->db_id = 0;
+				$post_type->target = '';
+				$post_type->url = '';
+				$post_type->xfn = '';
+				$post_type->attr_title = '';
+
 				$post_type->title = $post_type->labels->name . ' ' . __( "Archive" );
 			}
 			$walker = new Walker_Nav_Menu_Checklist( array() );
@@ -58,7 +65,7 @@ class WP_Post_Type_Archives_Nav {
 		</div>
 		<p class="button-controls">
 			<span class="add-to-menu">
-				<input type="submit"<?php wp_nav_menu_disabled_check( $nav_menu_selected_id ); ?> class="button-secondary submit-add-to-menu right" value="<?php esc_attr_e( 'Add to Menu' ); ?>" name="add-post-type-menu-item" id="submit-cpt-archive" />
+				<input type="submit" class="button-secondary submit-add-to-menu right" value="<?php esc_attr_e( 'Add to Menu' ); ?>" name="add-post-type-menu-item" id="submit-cpt-archive" />
 				<span class="spinner"></span>
 			</span>
 		</p>
