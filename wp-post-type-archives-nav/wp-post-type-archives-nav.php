@@ -43,7 +43,7 @@ class WP_Post_Type_Archives_Nav {
 			foreach ( $post_types as &$post_type ) {
 				$post_type->classes = array();
 				$post_type->type = 'cpt-archive';
-				$post_type->object = $post_type->name;
+				$post_type->object_id = $post_type->name;
 				$post_type->title = $post_type->labels->name . ' ' . __( "Archive" );
 			}
 			$walker = new Walker_Nav_Menu_Checklist( array() );
@@ -70,10 +70,10 @@ class WP_Post_Type_Archives_Nav {
 	 */
 	static function archive_menu_filter( $items, $menu, $args ) {
 		foreach( $items as &$item ) {
-			if( $item->object != 'cpt-archive' ) continue;
-			$item->url = get_post_type_archive_link( $item->type );
+			if( $item->type != 'cpt-archive' ) continue;
+			$item->url = get_post_type_archive_link( $item->object_id );
 
-			if( get_query_var( 'post_type' ) == $item->type ) {
+			if( get_query_var( 'post_type' ) == $item->object_id ) {
 				$item->classes[] = 'current-menu-item';
 				$item->current = true;
 			}
