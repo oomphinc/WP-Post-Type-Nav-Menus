@@ -43,6 +43,7 @@ class WP_Post_Type_Archives_Nav {
 			foreach ( $post_types as &$post_type ) {
 				$post_type->classes = array();
 				$post_type->type = 'cpt-archive';
+				$post_type->object = $post_type->name;
 				$post_type->object_id = $post_type->name;
 				$post_type->title = $post_type->labels->name . ' ' . __( "Archive" );
 			}
