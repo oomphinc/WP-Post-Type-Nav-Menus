@@ -78,8 +78,11 @@ class WP_Post_Type_Archives_Nav {
 	 */
 	static function archive_menu_filter( $items, $menu, $args ) {
 		foreach( $items as &$item ) {
-			if( $item->type != 'cpt-archive' ) continue;
-			$item->url = get_post_type_archive_link( $item->object_id );
+			if( $item->type != 'cpt-archive' ) {
+				continue;
+			}
+
+			$item->url = get_post_type_archive_link( $item->object );
 
 			if( get_query_var( 'post_type' ) == $item->object_id ) {
 				$item->classes[] = 'current-menu-item';
